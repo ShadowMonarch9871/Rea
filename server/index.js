@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
 import authroute from "./routes/auth.route.js";
+import listingRouter from "./routes/listing.route.js";
 // import cors from 'cors';
 import cookieParser from "cookie-parser";
 dotenv.config();
@@ -21,6 +22,7 @@ app.listen(3000, () => {
 });
 app.use("/api", userRouter);
 app.use("/api/auth", authroute);
+app.use("api/listing", listingRouter);
 // app.use("/api/auth", authroute);
 
 // app.use((err, req, res, next) => {
