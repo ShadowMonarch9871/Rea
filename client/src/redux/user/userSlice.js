@@ -18,7 +18,7 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
-    signInFailure: (state) => {
+    signInFailure: (state,action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -39,7 +39,7 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
-    updateUserFailure: (state) => {
+    updateUserFailure: (state,action) => {
       state.loading = false;
       state.error = action.payload;
     },
