@@ -2,7 +2,6 @@
 /node_modules
 **/node_modules**
 
-
 # testing
 /coverage
 
@@ -11,6 +10,7 @@
 
 # misc
 **.env**
+/server/.env
 
 .DS_Store
 .env.local
