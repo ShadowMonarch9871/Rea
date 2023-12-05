@@ -41,16 +41,16 @@ export const google = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      console.log("User exists")
+      console.log("User exists");
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = user._doc;
-      console.log("fafasfdafdaf")
+      // console.log("fafasfdafdaf");
       res
         .cookie("access_token", token, { httpOnly: true })
         .status(200)
         .json(rest);
     } else {
-      console.log("Creating User ")
+      console.log("Creating User ");
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
         Math.random().toString(36).slice(-8);
@@ -66,7 +66,7 @@ export const google = async (req, res, next) => {
       await newUser.save();
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = newUser._doc;
-      console.log("fafasfdafdaf")
+      // console.log("fafasfdafdaf");
 
       res
         .cookie("access_token", token, { httpOnly: true })
@@ -75,6 +75,14 @@ export const google = async (req, res, next) => {
     }
   } catch (error) {
     console.error(error.message);
+    next(error);
+  }
+};
+export const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie("access_token");
+    res.status(200).json("User has been logged out!");
+  } catch (error) {
     next(error);
   }
 };
