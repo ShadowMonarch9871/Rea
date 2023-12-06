@@ -125,6 +125,7 @@ export default function CreateListing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log("submit ")
     try {
       if (formData.imageUrls.length < 1)
         return setError("You must upload at least one image");

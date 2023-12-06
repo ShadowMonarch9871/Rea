@@ -22,7 +22,7 @@ app.listen(3000, () => {
 });
 app.use("/api", userRouter);
 app.use("/api/auth", authroute);
-app.use("api/listing", listingRouter);
+app.use("/api/listing", listingRouter);
 // app.use("/api/auth", authroute);
 
 // app.use((err, req, res, next) => {
