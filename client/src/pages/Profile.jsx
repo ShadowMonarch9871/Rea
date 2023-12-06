@@ -150,7 +150,7 @@ export default function Profile() {
         method: "DELETE",
       });
       const data = await res.json();
-      if ((data.success === false)) {
+      if (data.success === false) {
         return;
       }
       setUserListings((p) => p.filter((listing) => listing._id) !== listingId);
@@ -278,7 +278,9 @@ export default function Profile() {
                 >
                   Delete
                 </button>
-                <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}
