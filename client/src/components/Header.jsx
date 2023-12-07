@@ -5,9 +5,12 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
-  if (currentUser) {
-    console.log(currentUser);
-  }
+  // if (currentUser) {
+  //   console.log(currentUser);
+  // }
+  // if(!currentUser){
+  //   console.log("no current user")
+  // }
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -25,12 +28,12 @@ const Header = () => {
     }
   }, [location.search]);
   return (
-    <header className="bg-slate-200 shadow-md">
+    <header className="bg-violet-400 shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-4xl flex flex-wrap">
-            <span className="text-slate-500">Real</span>
-            <span className="text-slate-700">Estate</span>
+            <span className="text-slate-950">Real</span>
+            <span className="text-slate-200">Estate</span>
           </h1>
         </Link>
         <form
@@ -44,24 +47,25 @@ const Header = () => {
             placeholder="Search Property"
             className="bg-transparent w-24 sm:w-64 focus:outline-none"
           />
-          <TbHomeSearch size={25} className="text-slate-600 " />
+          <TbHomeSearch size={25} className="text-slate-700 " />
         </form>
         <ul className="flex gap-4">
           <Link to="/">
-            <li className="text-slate-700 hover:underline">Home</li>
+            <li className="text-stone-950 text-lg hover:underline">Home</li>
           </Link>
           <Link to="/about">
-            <li className="text-slate-700 hover:underline">About</li>
+            <li className="text-stone-950  text-lg hover:underline">About</li>
           </Link>{" "}
           <Link to="/profile">
             {currentUser ? (
               <img
                 src={currentUser.avatar}
                 alt="User Avatar"
-                className="h-7 w-7 rounded-full "
+                className="h-8 w-8 rounded-full "
               />
             ) : (
-              <li className="text-slate-700 hover:underline">Sign In</li>
+            <li className="text-stone-950  text-lg hover:underline">Sign in</li>
+              
             )}
           </Link>
         </ul>
