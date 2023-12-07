@@ -6,6 +6,8 @@ import authroute from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
 // import cors from 'cors';
 import cookieParser from "cookie-parser";
+import path from "path";
+
 dotenv.config();
 mongoose
   .connect(process.env.MONGO)
@@ -45,4 +47,10 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
