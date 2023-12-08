@@ -27,9 +27,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && npm install --prefix client  && npm install --prefix server && npm run build --prefix client",
+    "build": "npm install && cd client && npm install && npm run build && cd .. && cd server && npm install && cd ..",
     "start": "npm run start --prefix server & npm run start --prefix client"
-
   },
   "author": "",
   "license": "ISC"
